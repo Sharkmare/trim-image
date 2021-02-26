@@ -39,9 +39,12 @@ module.exports = function trimImage(filename, filenameOut, ...rest) {
         cropData.top = j;
 
         for (i = 0; i < w; i++) {
-          a = pixels.get(i, j, 3);
+	r = pixels.get(i, j, 0);
+	g = pixels.get(i, j, 1);
+	b = pixels.get(i, j, 2);
+	a = pixels.get(i, j, 3);
 
-          if (a !== 0) break top;
+          if (r+g+b+a !== 1020) break top;
         }
       }
     }
@@ -50,9 +53,13 @@ module.exports = function trimImage(filename, filenameOut, ...rest) {
     if (crop.right) {
       for (i = w - 1; i >= 0; i--) {
         for (j = h - 1; j >= 0; j--) {
-          a = pixels.get(i, j, 3);
+          
+	r = pixels.get(i, j, 0);
+	g = pixels.get(i, j, 1);
+	b = pixels.get(i, j, 2);
+	a = pixels.get(i, j, 3);
 
-          if (a !== 0) break right;
+          if (r+g+b+a !== 1020) break right;
         }
 
         cropData.right = i;
@@ -63,9 +70,12 @@ module.exports = function trimImage(filename, filenameOut, ...rest) {
     if (crop.bottom) {
       for (j = h - 1; j >= 0; j--) {
         for (i = w - 1; i >= 0; i--) {
-          a = pixels.get(i, j, 3);
+	r = pixels.get(i, j, 0);
+	g = pixels.get(i, j, 1);
+	b = pixels.get(i, j, 2);
+	a = pixels.get(i, j, 3);
 
-          if (a !== 0) break bottom;
+          if (r+g+b+a !== 1020) break bottom;
         }
 
         cropData.bottom = j;
@@ -78,9 +88,12 @@ module.exports = function trimImage(filename, filenameOut, ...rest) {
         cropData.left = i;
 
         for (j = 0; j < h; j++) {
-          a = pixels.get(i, j, 3);
+	r = pixels.get(i, j, 0);
+	g = pixels.get(i, j, 1);
+	b = pixels.get(i, j, 2);
+	a = pixels.get(i, j, 3);
 
-          if (a !== 0) break left;
+          if (r+g+b+a !== 1020) break left;
         }
       }
     }
